@@ -1,0 +1,16 @@
+RELEASE 0
+clear; node index.js create table politicians "id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT,party TEXT,location TEXT,grade_current REAL"
+clear; node index.js create table voters "id INTEGER PRIMARY KEY AUTOINCREMENT,first_name TEXT,last_name TEXT,gender TEXT,age INTEGER"
+clear; node index.js create table votes "id INTEGER PRIMARY KEY AUTOINCREMENT,voterId INTEGER,politicianId INTEGER,FOREIGN KEY (voterId) REFERENCES voters (id),FOREIGN KEY (politicianId) REFERENCES politicians (id)"
+
+RELEASE 1
+clear; node index.js insert seed politicians
+clear; node index.js insert seed voters
+clear; node index.js insert seed votes
+
+RELEASE 3
+clear; node index.js release3 nomor1 <partai> <Grade Min> <Grade Max>
+clear; node index.js release3 nomor2 "<Politician name>"
+clear; node index.js release3 nomor3 <condition(kata)>
+clear; node index.js release3 nomor4
+clear; node index.js release3 nomor5 <Politician name>
