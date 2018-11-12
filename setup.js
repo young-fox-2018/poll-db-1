@@ -10,6 +10,11 @@ let headerPoliticians = politicians.split('\n')[0].split(',')
 let headerVoters = voters.split('\n')[0].split(',')
 let headerVotes = votes.split('\n')[0].split(',').slice(0,2)
 
+db.run('drop table IF EXISTS politicians')
+db.run('drop table IF EXISTS voters')
+db.run('drop table IF EXISTS votes') 
+
+
 
 let qCreatePolitician = 
 `
@@ -45,9 +50,6 @@ CREATE TABLE IF NOT EXISTS votes (
 // console.log(qCreateVoters)
 // console.log(qCreateVotes)
 
-db.run('drop table politicians')
-db.run('drop table voters')
-db.run('drop table votes') 
 
 db.serialize(function() {
     db.run(qCreatePolitician, function(err){
