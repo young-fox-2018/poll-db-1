@@ -35,6 +35,7 @@ if (argv[0] == "insert"){
     case "candidates": deleteCandidates(); break;
     default: " invalid input "; break;
   }
+  // COMMAND GET BUAT MASUKIN DATA!
 }else if (argv[0] == "get"){
   getdata()
 }
