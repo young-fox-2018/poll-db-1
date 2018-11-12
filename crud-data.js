@@ -34,8 +34,6 @@ switch(input) {
 
     case 'update' :
     if(tableName === 'politicians') {
-        // kasih kondisi argv nya disini 
-        // if( argv[] === 'ada nilainya ')
         let updateData
         if(argv[3] !== '') {
             updateData = `UPDATE politicians SET name = "${argv[3]}" WHERE politicianId = "${argv[2]}"`
