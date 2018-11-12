@@ -8,7 +8,7 @@ let queryPol = `CREATE TABLE IF NOT EXISTS Politicians (
     name VARCHAR,
     party VARCHAR,
     location VARCHAR,
-    grade_current VARCHAR
+    grade_current INTEGER
 )`
 
 let queryVoters = `CREATE TABLE IF NOT EXISTS Voters (
