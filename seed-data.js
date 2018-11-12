@@ -8,7 +8,38 @@ const candidates = fs.readFileSync('./politicians.csv', 'utf8').split('\n')
 let argv = process.argv.slice(2)
 
 
-function Getdata(){
+
+
+if (argv[0] == "insert"){
+  // BENTUK INPUTAN ==> COMMAND , table apa ==> votes | voters | candidates , valuenya
+  switch (argv[1]) {
+    case "votes": insertVotes(); break;
+    case "voters": insertVoters(); break;
+    case "candidates": insertCandidates(); break;
+    default: " invalid input "; break;
+  }
+}else if (argv[0] == "update"){
+  // BENTUK INPUTAN ==> COMMAND , table apa ,id , valuenya
+
+  switch (argv[1]) {
+    case "votes": updateVotes(); break;
+    case "voters": updateVoters(); break;
+    case "candidates": updateCandidates(); break;
+    default: " invalid input "; break;
+  }
+} else if (argv[0] == "delete"){
+    // BENTUK INPUTAN ==> COMMAND , table apa ,id
+  switch (argv[1]) {
+    case "votes": deleteVotes(); break;
+    case "voters": deleteVoters(); break;
+    case "candidates": deleteCandidates(); break;
+    default: " invalid input "; break;
+  }
+}else if (argv[0] == "get"){
+  getdata()
+}
+
+function getdata(){
   db.serialize(function(){
     for (let i = 1; i < poll.length; i++) {
       const masuk = poll[i].split(',')
@@ -57,32 +88,6 @@ function Getdata(){
   
 }
 
-if (argv[0] == "insert"){
-  // BENTUK INPUTAN ==> COMMAND , table apa , valuenya
-  switch (argv[1]) {
-    case "votes": insertVotes(); break;
-    case "voters": insertVoters(); break;
-    case "candidates": insertCandidates(); break;
-    default: " invalid input "; break;
-  }
-}else if (argv[0] == "update"){
-  // BENTUK INPUTAN ==> COMMAND , table apa ,id , valuenya
-
-  switch (argv[1]) {
-    case "votes": updateVotes(); break;
-    case "voters": updateVoters(); break;
-    case "candidates": updateCandidates(); break;
-    default: " invalid input "; break;
-  }
-} else if (argv[0] == "delete"){
-    // BENTUK INPUTAN ==> COMMAND , table apa ,id
-  switch (argv[1]) {
-    case "votes": deleteVotes(); break;
-    case "voters": deleteVoters(); break;
-    case "candidates": deleteCandidates(); break;
-    default: " invalid input "; break;
-  }
-}
 
 function insertVoters(){
   let voters = `INSERT INTO voters (first_name, last_name, gender , age) VALUES ("${argv[2]}","${argv[3]}", "${argv[4]}", ${argv[5]})`
