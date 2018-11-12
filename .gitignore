@@ -1,2 +1,5 @@
 .DS_Store
 node_modules
+sqlite3
+sqldiff
+sqlite3_analyzer
